@@ -1,0 +1,13 @@
+.contas-e-botao {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.botao-adicionar-conta {
+  margin: 0 auto;
+}
+
+.icone-botao {
+  width: 1rem;
+}

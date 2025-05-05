@@ -1,0 +1,24 @@
+.form-modal {
+    display: flex;
+    flex-direction: column;
+    border: 0;
+    gap: 1rem;
+}
+
+.label-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 0.5rem;
+}
+
+.input {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 0;
+    background: var(--fundo-componentes);
+}
+
+.botao-adicionar-conta {
+    margin-left: auto;
+}

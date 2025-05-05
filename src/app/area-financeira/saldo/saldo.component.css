@@ -1,0 +1,9 @@
+.valor {
+  padding: 1.8rem 0;
+  color: var(--violeta-destaque);
+  font-weight: 700;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

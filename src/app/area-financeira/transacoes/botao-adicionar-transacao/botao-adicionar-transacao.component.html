@@ -1,0 +1,66 @@
+<app-botao (click)="abrirModal()">
+    <img src="icones/moeda.svg" alt="" class="icone-botao" />
+    Adicionar transação
+</app-botao>
+
+<app-modal-base [(aberto)]="modalAberto">
+    <ng-container cabecalho-modal>
+        <img src="icones/moeda.svg" alt="" class="icone-modal">
+        <h2 class="texto-lg">Adicionar transação</h2>
+    </ng-container>
+
+    <form class="form-modal" (ngSubmit)="aoSubmeter()" ngNativeValidate>
+        <label class="label-modal">
+            <span>Nome da transação</span>
+            <input [(ngModel)]="novaTransacaoForm.nome" class="input" type="text" name="nome-transacao"/>
+        </label>
+
+        <label class="label-modal">
+            <span>Tipo de transação</span>
+            <div class="radio-label">
+                @for (tipoTransacao of tipoTransacaoEnum | keyvalue; track tipoTransacao.key) {
+                <label class="radio-item">
+                    <input [(ngModel)]="novaTransacaoForm.tipo" 
+                        class="input" 
+                        type="radio" 
+                        name="tipo-transacao" 
+                        [value]="tipoTransacao.value" 
+                        required>
+                    <span>{{ tipoTransacao.value }}</span>
+                </label>
+                }
+            </div>
+        </label>
+
+        <label class="label-modal">
+            <span>Valor</span>
+            <input [(ngModel)]="novaTransacaoForm.valor" 
+                class="input" 
+                type="number" 
+                name="valor-transacao" 
+                placeholder="R$ 500,00"
+                min="0.01" 
+                step="0.01" 
+                required />
+        </label>
+
+        <label class="label-modal">
+            <span>Data da transação</span>
+            <input [(ngModel)]="novaTransacaoForm.data" class="input" name="data-transacao" type="date" required />
+        </label>
+
+        <label class="label-modal">
+            <span>Conta Bancária</span>
+            <select [(ngModel)]="novaTransacaoForm.conta" class="input select-conta-transacao" name="conta-transacao" id="conta-transacao" required>
+                <option value="" selected disabled>Selecione a conta</option>
+                @for (conta of contas(); track conta.nome) {
+                <option [value]="conta.nome">{{ conta.nome }}</option>
+                }
+            </select>
+        </label>
+
+        <app-botao class="botao-adicionar-transacao">
+            Adicionar
+        </app-botao>
+    </form>
+</app-modal-base>
